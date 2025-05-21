@@ -7,9 +7,9 @@ button {
   max-width: 150px;        /* Don't get larger than 150px */
   max-height: 150px;
 
-  margin-left: 2vw;
+  margin-left: 10px;
   margin-top: 7.5vh;
-  margin-right: 2.35vw;
+  margin-right: 12px;
   
   background-color: #c6c5c4;
   border: 1px solid black;
