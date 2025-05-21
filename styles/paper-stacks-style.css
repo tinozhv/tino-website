@@ -1,0 +1,21 @@
+body {
+  background-color: #d6d5d4;
+}
+button {
+  width: 30vw;             /* 20% of viewport width */
+  height: 30vw;            /* Keep it square */
+  max-width: 150px;        /* Don't get larger than 150px */
+  max-height: 150px;
+
+  margin-left: 2vw;
+  margin-top: 10vh;
+  margin-right: 2.35vw;
+  
+  background-color: #c6c5c4;
+  border: 1px solid black;
+  border-radius: 0;
+  font-size: 1rem;
+  cursor: pointer;
+  
+  box-shadow: 4px -3px 0px rgba(0, 0, 0, 0.5);
+}
