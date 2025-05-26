@@ -25,8 +25,22 @@ let stacks = {
         'https://tinoschincariol.com/paper-stacks/images/left/Full%20fathom%20five%20thy%20father%20lies.png',
         'https://tinoschincariol.com/paper-stacks/images/left/Full-time%20permanent%20Butcher.png',
         'https://tinoschincariol.com/paper-stacks/images/left/Grass%20grows%20from%20the%20middle.png',
-        "https://tinoschincariol.com/paper-stacks/images/left/I’m%20not%20sure%20how%20this%20fits.png",
+        "https://tinoschincariol.com/paper-stacks/images/left/imnotsure.png",
+        'https://tinoschincariol.com/paper-stacks/images/left/My%20daughter%20plays%20on%20the%20floor.png',
+        'https://tinoschincariol.com/paper-stacks/images/left/My%20favourite%20days%20in%20LA%20are%20nights.png',
+        'https://tinoschincariol.com/paper-stacks/images/left/Pay%20Parking%20Enforced.png',
+        'https://tinoschincariol.com/paper-stacks/images/left/Replica%20of%20a%20chip.png',
+        'https://tinoschincariol.com/paper-stacks/images/left/The%20contemporary%20is%20constituted%20by%20doubt.png',
+        'https://tinoschincariol.com/paper-stacks/images/left/The%20heaven%20and%20earth%20are%20united%20in%20gold.png',
+        'https://tinoschincariol.com/paper-stacks/images/left/The%20salt%20sea%20will%20unlock%20their%20silence.png',
+        "https://tinoschincariol.com/paper-stacks/images/left/There's%20250$%20+%20TX%20admin%20fee.png",
+        'https://tinoschincariol.com/paper-stacks/images/left/To%20Find%20The%20Color%20Of%20Summer.png'
 
+
+    ],
+
+    right: [
+        //TODO: add right files
     ]
 }
 
