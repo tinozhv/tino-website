@@ -1,7 +1,7 @@
 body {
   background-color: #d6d5d4;
 }
-button {
+.stack-button {
   width: 30vw;             /* 20% of viewport width */
   height: 30vw;            /* Keep it square */
   max-width: 150px;        /* Don't get larger than 150px */
@@ -43,4 +43,13 @@ button {
     stroke: black;
     stroke-width: 1px;
     margin-bottom: 20px;
+}
+
+.modal-button {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#stack-image {
+    display: none;
 }
