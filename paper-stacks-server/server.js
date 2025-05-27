@@ -88,8 +88,8 @@ function scheduleDailyReset() {
     setInterval(() => {
         const now = new Date();
         if (now.getUTCHours() === 0 && now.getUTCMinutes() === 0) {
-            stacks.L = shuffleArray(fullStacks.L);
-            stacks.R = shuffleArray(fullStacks.R);
+            stacks.left = shuffleArray(fullStacks.left);
+            stacks.right = shuffleArray(fullStacks.right);
             console.log('Stacks reset at midnight UTC!');
         }
     }, 60 * 1000);  // check every 60 seconds
@@ -97,7 +97,14 @@ function scheduleDailyReset() {
 
 // Define a route: GET /stack/top
 // This route responds with the top item of the stack (last item in the array)
-app.get('/stack/top', (req, res) => {
+app.get('/stack/:side/top', (req, res) => {
+    const side = req.params.side;  // 'left' or 'right'
+    const stack = stacks[side];
+    
+    if (!stack) {
+        return res.send('Invalid stack side');
+    }
+
     if (stack.length === 0) {
         // If the stack is empty, return a message
         return res.send('This stack is empty');
