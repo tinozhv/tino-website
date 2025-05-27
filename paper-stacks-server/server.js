@@ -95,6 +95,10 @@ function scheduleDailyReset() {
     }, 60 * 1000);  // check every 60 seconds
 };
 
+app.get('/', (req, res) => {
+    res.send('Paper Stacks backend is running.');
+});
+
 // Define a route: GET /stack/top
 // This route responds with the top item of the stack (last item in the array)
 app.get('/stack/:side/top', (req, res) => {
@@ -111,6 +115,35 @@ app.get('/stack/:side/top', (req, res) => {
     }
     // Otherwise, return the top item
     res.json({ top: stack[stack.length - 1] });
+});
+
+// POST /stack/:side/remove → pop the top item
+app.post('/stack/:side/remove', (req, res) => {
+    const side = req.params.side;  // 'left' or 'right'
+    const stack = stacks[side];
+
+    if (!stack) {
+        return res.send('Invalid stack side');
+    }
+
+    if (stack.length === 0) {
+        return res.send(`The ${side} stack is already empty`);
+    }
+
+    const removed = stack.pop();
+    res.json({ removed });
+});
+
+// POST /stack/:side/return → acknowledge keeping top item
+app.post('/stack/:side/return', (req, res) => {
+    const side = req.params.side;  // 'left' or 'right'
+    const stack = stacks[side];
+
+    if (!stack) {
+        return res.send('Invalid stack side');
+    }
+
+    res.json({ message: `Top item kept on ${side} stack` });
 });
 
 //Start the Express server and listen for incoming requests on the defined port
