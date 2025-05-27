@@ -78,7 +78,7 @@ function shuffleArray(array) {
     const copy = [...array];
     for (let i = copy.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [copy[i], copy[j] = [copy[j], copy[i]]];
+        [copy[i], copy[j]] = [copy[j], copy[i]];
     }
 
     return copy;
@@ -110,7 +110,7 @@ app.get('/stack/:side/top', (req, res) => {
         return res.send('This stack is empty');
     }
     // Otherwise, return the top item
-    res.send(stack[stack.length - 1]);
+    res.json({ top: stack[stack.length - 1] });
 });
 
 //Start the Express server and listen for incoming requests on the defined port
