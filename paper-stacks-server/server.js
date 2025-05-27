@@ -2,8 +2,8 @@
 const express = require('express');
 
 //Create an Express application
-const app = express();
 const cors = require('cors');
+const app = express();
 
 app.use(cors());
 
