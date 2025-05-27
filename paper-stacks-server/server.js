@@ -41,6 +41,8 @@ let stacks = {
 
     right: [
         //TODO: add right files
+        'https://tinoschincariol.com/paper-stacks/images/right/Affordable%20cinematographer%20for%20hire.png',
+        'https://tinoschincariol.com/paper-stacks/images/right/All%20of%20This%20Self-Monitoring.png',
     ]
 }
 
