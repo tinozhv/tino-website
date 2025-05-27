@@ -19,13 +19,13 @@
                 const peekRightButton = document.getElementById('peek-right');
 
                 peekLeftButton.addEventListener('click', async () => {
-                    const res = await fetch(`${backendUrl}/stack/left/top`);
+                    const res = await fetch(`${backendUrl}/stack/left/top`, { mode: 'cors' });
                     const data = await res.json();
                     console.log('Left top item:', data);
                 });
 
                 peekRightButton.addEventListener('click', async () => {
-                    const res = await fetch(`${backendUrl}/stack/right/top`);
+                    const res = await fetch(`${backendUrl}/stack/right/top`, { mode: 'cors' });
                     const data = await res.json();
                     console.log('Right top item:', data);
                 });
