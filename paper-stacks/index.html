@@ -25,17 +25,25 @@
                 const backendUrl = 'https://tino-website.onrender.com';
                 const peekLeftButton = document.getElementById('peek-left');
                 const peekRightButton = document.getElementById('peek-right');
+                const modal = document.getElementById('image-modal');
+                const modalImage = document.getElementById('stack-image');
 
                 peekLeftButton.addEventListener('click', async () => {
                     const res = await fetch(`${backendUrl}/stack/left/top`, { mode: 'cors' });
                     const data = await res.json();
-                    console.log('Left top item:', data);
+                    if (data.top) {
+                        modalImage.src = data.top;
+                        modal.style.display = 'flex';
+                    }
                 });
 
                 peekRightButton.addEventListener('click', async () => {
                     const res = await fetch(`${backendUrl}/stack/right/top`, { mode: 'cors' });
                     const data = await res.json();
-                    console.log('Right top item:', data);
+                    if (data.top) {
+                        modalImage.src = data.top;
+                        modal.style.display = 'flex';
+                    }
                 });
             });
         </script>
