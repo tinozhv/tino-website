@@ -13,20 +13,22 @@
         <img id="left-stack-image" style="display: none; max-width: 300px;">
 
         <script>
-            const backendUrl = 'https://tino-website.onrender.com';
-            const peekLeftButton = document.getElementById('peek-left');
-            const peekRightButton = document.getElementById('peek-right');
+            document.addEventListener('DOMContentLoaded', () => {
+                const backendUrl = 'https://tino-website.onrender.com';
+                const peekLeftButton = document.getElementById('peek-left');
+                const peekRightButton = document.getElementById('peek-right');
 
-            peekLeftButton.addEventListener('click', async () => {
-                const res = await fetch(`${backendUrl}/stack/left/top`);
-                const data = await res.json();
-                console.log('Left top item:', data);
-            });
+                peekLeftButton.addEventListener('click', async () => {
+                    const res = await fetch(`${backendUrl}/stack/left/top`);
+                    const data = await res.json();
+                    console.log('Left top item:', data);
+                });
 
-            peekRightButton.addEventListener('click', async () => {
-                const res = await fetch(`${backendUrl}/stack/right/top`);
-                const data = await res.json();
-                console.log('Right top item:', data);
+                peekRightButton.addEventListener('click', async () => {
+                    const res = await fetch(`${backendUrl}/stack/right/top`);
+                    const data = await res.json();
+                    console.log('Right top item:', data);
+                });
             });
         </script>
-    </body>
+    </body></html>
