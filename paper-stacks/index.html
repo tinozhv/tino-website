@@ -13,6 +13,7 @@
         <img id="left-stack-image" style="display: none; max-width: 300px;">
         <div id="image-modal" class="modal">
             <div class="modal-content">
+                <div id="loading-message" style="display: none;">Please wait... the server takes a moment to spin up</div>
                 <img id="stack-image" src="">
                 <br>
                 <button id="download-btn" class="modal-button">Download</button>
@@ -28,8 +29,18 @@
                 const modal = document.getElementById('image-modal');
                 const modalImage = document.getElementById('stack-image');
 
+                let loadingTimeout;
+
                 peekLeftButton.addEventListener('click', async () => {
+
+                    loadingTimeout = setTimeout(() => {
+                        document.getElementById('loading-message').style.display = 'block';
+                        }, 1000);
+                    
                     const res = await fetch(`${backendUrl}/stack/left/top`, { mode: 'cors' });
+                    clearTimeout(loadingTimeout);
+                    document.getElementById('loading-message').style.display = 'none';
+
                     const data = await res.json();
                     if (data.top) {
                         modalImage.src = data.top;
