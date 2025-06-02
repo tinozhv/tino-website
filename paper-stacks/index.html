@@ -17,8 +17,10 @@
                 <div id="loading-message" style="display: none;">Please wait... the server takes a moment to spin up</div>
                 <img id="stack-image" src="">
                 <br>
-                <button id="download-btn" class="modal-button">Download</button>
-                <button id="return-btn" class="modal-button">Return</button>
+                <div id="modal-buttons" style="display: none;">
+                    <button id="download-btn" class="modal-button">Download</button>
+                    <button id="return-btn" class="modal-button">Return</button>
+                </div>
             </div>
         </div>
 
@@ -31,6 +33,8 @@
                 const modalImage = document.getElementById('stack-image');
                 const downloadButton = document.getElementById('download-btn');
                 const returnButton = document.getElementById('return-btn');
+                const modalButtons = document.getElementById('modal-buttons');
+                const loadingMessage = document.getElementById('loading-message');
 
                 let currentSide = null;
                 let currentImageUrl = null;
@@ -40,44 +44,48 @@
                 peekLeftButton.addEventListener('click', async () => {
                     currentSide = 'left';
                     modal.style.display = 'flex';
-                    document.getElementById('loading-message').style.display = 'none';
+                    loadingMessage.style.display = 'none';
                     modalImage.style.display = 'none';
+                    modalButtons.style.display = 'none';
 
                     loadingTimeout = setTimeout(() => {
-                        document.getElementById('loading-message').style.display = 'block';
+                        loadingMessage.style.display = 'block';
                     }, 500); // show after half a second
 
                     const res = await fetch(`${backendUrl}/stack/left/top`, { mode: 'cors' });
                     clearTimeout(loadingTimeout);
-                    document.getElementById('loading-message').style.display = 'none';
+                    loadingMessage.style.display = 'none';
 
                     const data = await res.json();
                     if (data.top) {
                         currentImageUrl = data.top;
                         modalImage.src = data.top;
                         modalImage.style.display = 'block';
+                        modalButtons.style.display = 'block';
                     }
                 });
 
                 peekRightButton.addEventListener('click', async () => {
                     currentSide = 'right';
                     modal.style.display = 'flex';
-                    document.getElementById('loading-message').style.display = 'none';
+                    loadingMessage.style.display = 'none';
                     modalImage.style.display = 'none';
+                    modalButtons.style.display = 'none';
 
                     loadingTimeout = setTimeout(() => {
-                        document.getElementById('loading-message').style.display = 'block';
+                        loadingMessage.style.display = 'block';
                     }, 500); // show after half a second
 
                     const res = await fetch(`${backendUrl}/stack/right/top`, { mode: 'cors' });
                     clearTimeout(loadingTimeout);
-                    document.getElementById('loading-message').style.display = 'none';
+                    loadingMessage.style.display = 'none';
 
                     const data = await res.json();
                     if (data.top) {
                         currentImageUrl = data.top;
                         modalImage.src = data.top;
                         modalImage.style.display = 'block';
+                        modalButtons.style.display = 'block';
                     }
                 });
 
