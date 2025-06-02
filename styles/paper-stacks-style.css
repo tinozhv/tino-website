@@ -41,8 +41,7 @@ body {
     width: 30vw;
     max-width: 400px;
     height: auto;
-    stroke: black;
-    stroke-width: 1px;
+    border: 1px solid black;
     margin-bottom: 20px;
     margin-top: 20px;
 }
@@ -58,10 +57,13 @@ body {
   border: none;
   color: white;
   cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: white;
+  
 }
 
 #stack-image {
-    display: none;
+    display: none;3
 }
 
 #loading-message {
