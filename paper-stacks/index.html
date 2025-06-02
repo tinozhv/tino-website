@@ -38,9 +38,13 @@
 
                 peekLeftButton.addEventListener('click', async () => {
                     currentSide = 'left';
+                    modal.style.display = 'flex';
+                    document.getElementById('loading-message').style.display = 'none';
+                    modalImage.style.display = 'none';
+
                     loadingTimeout = setTimeout(() => {
                         document.getElementById('loading-message').style.display = 'block';
-                    }, 1000);
+                    }, 500); // show after half a second
 
                     const res = await fetch(`${backendUrl}/stack/left/top`, { mode: 'cors' });
                     clearTimeout(loadingTimeout);
@@ -50,16 +54,19 @@
                     if (data.top) {
                         currentImageUrl = data.top;
                         modalImage.src = data.top;
-                        modal.style.display = 'flex';
                         modalImage.style.display = 'block';
                     }
                 });
 
                 peekRightButton.addEventListener('click', async () => {
                     currentSide = 'right';
+                    modal.style.display = 'flex';
+                    document.getElementById('loading-message').style.display = 'none';
+                    modalImage.style.display = 'none';
+
                     loadingTimeout = setTimeout(() => {
                         document.getElementById('loading-message').style.display = 'block';
-                    }, 1000);
+                    }, 500); // show after half a second
 
                     const res = await fetch(`${backendUrl}/stack/right/top`, { mode: 'cors' });
                     clearTimeout(loadingTimeout);
@@ -69,7 +76,6 @@
                     if (data.top) {
                         currentImageUrl = data.top;
                         modalImage.src = data.top;
-                        modal.style.display = 'flex';
                         modalImage.style.display = 'block';
                     }
                 });
