@@ -28,21 +28,27 @@
                 const peekRightButton = document.getElementById('peek-right');
                 const modal = document.getElementById('image-modal');
                 const modalImage = document.getElementById('stack-image');
+                const downloadButton = document.getElementById('download-btn');
+                const returnButton = document.getElementById('return-btn');
+
+                let currentSide = null;
+                let currentImageUrl = null;
 
                 let loadingTimeout;
 
                 peekLeftButton.addEventListener('click', async () => {
-
+                    currentSide = 'left';
                     loadingTimeout = setTimeout(() => {
                         document.getElementById('loading-message').style.display = 'block';
-                        }, 1000);
-                    
+                    }, 1000);
+
                     const res = await fetch(`${backendUrl}/stack/left/top`, { mode: 'cors' });
                     clearTimeout(loadingTimeout);
                     document.getElementById('loading-message').style.display = 'none';
 
                     const data = await res.json();
                     if (data.top) {
+                        currentImageUrl = data.top;
                         modalImage.src = data.top;
                         modal.style.display = 'flex';
                         modalImage.style.display = 'block';
@@ -50,12 +56,41 @@
                 });
 
                 peekRightButton.addEventListener('click', async () => {
+                    currentSide = 'right';
+                    loadingTimeout = setTimeout(() => {
+                        document.getElementById('loading-message').style.display = 'block';
+                    }, 1000);
+
                     const res = await fetch(`${backendUrl}/stack/right/top`, { mode: 'cors' });
+                    clearTimeout(loadingTimeout);
+                    document.getElementById('loading-message').style.display = 'none';
+
                     const data = await res.json();
                     if (data.top) {
+                        currentImageUrl = data.top;
                         modalImage.src = data.top;
                         modal.style.display = 'flex';
                         modalImage.style.display = 'block';
+                    }
+                });
+
+                downloadButton.addEventListener('click', async () => {
+                    if (currentSide && currentImageUrl) {
+                        await fetch(`${backendUrl}/stack/${currentSide}/remove`, { method: 'POST' });
+                        const link = document.createElement('a');
+                        link.href = currentImageUrl;
+                        link.download = '';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        modal.style.display = 'none';
+                    }
+                });
+
+                returnButton.addEventListener('click', async () => {
+                    if (currentSide) {
+                        await fetch(`${backendUrl}/stack/${currentSide}/return`, { method: 'POST' });
+                        modal.style.display = 'none';
                     }
                 });
             });
