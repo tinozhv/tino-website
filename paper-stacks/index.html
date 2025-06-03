@@ -21,6 +21,7 @@
                     <button id="download-btn" class="modal-button">Download</button>
                     <button id="return-btn" class="modal-button">Return</button>
                 </div>
+                <div id="empty-message" style="display: none; color: white;">This stack is empty.</div>
             </div>
         </div>
 
@@ -62,6 +63,11 @@
                         modalImage.src = data.top;
                         modalImage.style.display = 'block';
                         modalButtons.style.display = 'block';
+                        document.getElementById('empty-message').style.display = 'none';
+                    } else {
+                        modalImage.style.display = 'none';
+                        modalButtons.style.display = 'none';
+                        document.getElementById('empty-message').style.display = 'block';
                     }
                 });
 
@@ -86,6 +92,11 @@
                         modalImage.src = data.top;
                         modalImage.style.display = 'block';
                         modalButtons.style.display = 'block';
+                        document.getElementById('empty-message').style.display = 'none';
+                    } else {
+                        modalImage.style.display = 'none';
+                        modalButtons.style.display = 'none';
+                        document.getElementById('empty-message').style.display = 'block';
                     }
                 });
 
